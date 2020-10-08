@@ -1,0 +1,95 @@
+<?php
+    //Turn on error reporting
+    ini_set('display_errors', 'On');
+    //Connects to the database
+    $mysqli = new mysqli("oniddb.cws.oregonstate.edu","wujiao-db","cUhlYd6WZm2g9lqP","wujiao-db");
+    if(!$mysqli || $mysqli->connect_errno){
+        echo "Connection error " . $mysqli->connect_errno . " " . $mysqli->connect_error;
+    }
+?>
+
+<!DOCTYPE html >
+
+<html>
+
+<body>
+    
+ <font color = "blue", size = '5'>
+ Add CUSTOMERS to STORES
+</font>
+ 
+<br><br>
+
+<p>
+Please fill in the following info to add or update customers to the database.
+</p>
+
+<div>
+    <form method="post" action = "addcustomertostore.php">
+        <fieldset>
+            <legend>Store</legend>
+            <p>Store Location:
+            <select name = "store">
+                <option></option>
+                <option>TORONTO</option><option>CALGARY</option>
+                <option>NEW YORK</option><option>LOS ANGELES</option>
+            </select>
+            </p>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Name</legend>
+            <p>First Name: <input type = "text" name = "FirstName"/></p>
+            <p>Last Name: <input type = "text" name = "LastName"/></p>
+            <a href = "customers.php">Add New Customers Here</a>
+        </fieldset>
+
+        
+        <fieldset>
+            <legend>Join_date</legend>
+            <p>Joindate(YYYY-MM-DD) <input type = "text" name = "Joindate"/></p>
+        </fieldset>
+
+
+        <p><input type = "submit" name = "Add" value = "add customer to store"/></p>
+        <p><input type = "submit" name = "Update" value = "update employee"/></p>
+    </form>
+</div>
+
+<div>
+<p>The existing customers in all the stores are:</p>
+<table>
+<tr>
+<td>Customer ID</td>
+<td>Store ID</td>
+<td>First Name</td>
+<td>Last Name</td>
+</tr>
+
+<?php
+    if(!($stmt = $mysqli->prepare("SELECT gw_customer.customer_id, gw_customer_membership.sid, gw_customer.first_name, gw_customer.last_name FROM gw_customer INNER JOIN gw_customer_membership ON gw_customer_membership.cid = gw_customer.customer_id"))){
+        echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+    }
+    
+    if(!$stmt->execute()){
+        echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+    }
+    if(!$stmt->bind_result($cid, $sid, $cfname, $clname)){
+        echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+    }
+    while($stmt->fetch()){
+        echo  "<tr>\n<td>\n" . $cid. "\n</td>\n<td>\n" . $sid . "\n</td>\n<td>\n".$cfname . "\n</td>\n<td>\n" . $clname . "\n</td>\n\n</tr>";
+    }
+    $stmt->close();
+    ?>
+
+</table>
+</div>
+
+
+
+</body>
+
+
+
+</html>
