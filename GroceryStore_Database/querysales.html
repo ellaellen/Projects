@@ -1,0 +1,124 @@
+<!DOCTYPE html >
+
+<html>
+
+<head>
+    <title>SEARCH SALES</title>
+</head>
+
+<body>
+    <div>
+<?php
+
+        //Turn on error reporting
+        ini_set('display_errors', 'On');
+        //Connects to the database
+        $mysqli = new mysqli("oniddb.cws.oregonstate.edu","wujiao-db","cUhlYd6WZm2g9lqP","wujiao-db");
+        if(!$mysqli || $mysqli->connect_errno){
+            echo "Connection error " . $mysqli->connect_errno . " " . $mysqli->connect_error;
+        }
+        ?>
+    </div>
+ 
+<br><br>
+
+<p>
+Please fill in the following infomation to search sales in the database
+</p>
+
+<div>
+    <form action="searchsales.php" method="post" >
+        <fieldset>
+            <legend>Filter by</legend>
+            <p>Store
+            <select name = "store">
+                <option>ANY</option>
+             <?php
+                 $query = "SELECT gw_stores.city FROM gw_stores";
+                 
+                 if(!($stmt = $mysqli->prepare($query))){
+                     echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+                 }
+                     
+                if(!($stmt->bind_param("s",$_POST[city]))){
+                    echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
+             }
+             if(!$stmt->execute()){
+                 echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
+             }
+             while ($stmt->fetch()) {
+                 echo '<option value=" '. $ .' "> ' . $city . '</option>\n';
+             }
+             $stmt->close();
+            ?>
+            </select>
+            </p>
+
+            <p>Employee
+            <select>
+                <?php
+                $query = "SELECT gw_stores.city FROM gw_stores";
+
+                if(!($stmt = $mysqli->prepare($query))){
+                echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+                }
+                if(!($stmt->bind_param("s",$_POST[city]))){
+                echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
+                }
+                if(!$stmt->execute()){
+                echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
+                }
+                while ($stmt->fetch()) {
+                echo '<option value=" '. $ .' "> ' . $city . '</option>\n';
+                }
+                $stmt->close();
+                ?>
+            </select>
+            </p>
+
+            <p>Product
+            <select>
+                <?php
+                $query = "SELECT gw_products.name FROM gw_products";
+
+                if(!($stmt = $mysqli->prepare($query))){
+                echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+                }
+                if(!($stmt->bind_param("s",$_POST[name]))){
+                echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
+                }
+                if(!$stmt->execute()){
+                echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
+                }
+                while ($stmt->fetch()) {
+                echo '<option value=" '. $ .' "> ' . $name . '</option>\n';
+                }
+                $stmt->close();
+                ?>
+            </select>
+            </p>
+
+            <p>Date<input type = "text" name = "SaleDate"/></p>
+
+        </fieldset>
+
+        <p><input type = "submit" name = "SearchSales" value = "Retrieve"/></p>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>

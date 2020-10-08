@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+
+<html>
+
+<body>
+    
+ <font color = "blue", size = '5'>
+ Add, Update and Delete DEPARTMENTS
+</font>
+ 
+<br><br>
+
+<p>
+
+Please fill in the following infomation to add, delete or update departments to the database
+
+</p>
+<div>
+    <form action="deletedepartments.php" method="post" >
+        <fieldset>
+            <legend>Department Name</legend>
+            <p>Name: <input type = "text" name = "DeptName"/></p>
+        </fieldset>
+        
+        <p><input type = "submit" name = "Add" value = "Add Department"/></p>
+        <p><input type = "submit" name = "Delete" value = "Delete Department"/></p>
+    </form>
+</div>
+
+<div>
+    <form action="updatedepartments.php" method="post" >
+        <fieldset>
+            <legend>Update Department Name</legend>
+            <p>Old Name: 
+            <select name = "oldname">
+                <?php
+
+
+
+
+            </p>
+            <p>New Name: <input type = "text" name = "newname"/></p>
+        </fieldset>
+        
+        <p><input type = "submit" name = "Update" value = "Update Department"/></p>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>

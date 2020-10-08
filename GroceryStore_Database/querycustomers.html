@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+
+<html>
+
+<head>
+    <title>SEARCH CUSTOMERS</title>
+</head>
+
+<body>
+ 
+<br><br>
+
+<p>
+Please fill in the following infomation to search customers in the database
+</p>
+
+<div>
+    <form action="searchcustomers.php" method="post" >
+        <fieldset>
+            <legend>Filter by</legend>
+            <p>Store Branch
+            <select name = "store">
+                <option> </option>
+                <option>TORONTO</option><option>CALGARY</option>
+                <option>NEW YORK</option><option>LOS ANGELES</option>
+            </select>
+            </p>
+        
+            
+            <p>Join after the Date<input type = "text" name = "JoinDate"/></p>
+        
+        </fieldset>
+        
+        <p><input type = "submit" name = "SearchCustomers" value = "Retrieve"/></p>
+    </form>
+</div>
+
+
+
+</body>
+
+
+
+</html>

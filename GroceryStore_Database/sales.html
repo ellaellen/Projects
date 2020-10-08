@@ -1,0 +1,139 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+
+<body>
+    
+<font color = "blue", size = '5'>
+ Add and Update SALES
+</font>
+ 
+<br><br>
+
+<p>
+
+Please fill in the following infomation to add or update sales to the database
+
+</p>
+<div>
+    <form action="addsales.php" method="post" >
+        <fieldset>
+            <legend>Employee ID</legend>
+            <p>Employee ID:
+            <select name = "employeeid">
+                <?php
+                //Turn on error reporting
+                ini_set('display_errors', 'On');
+                //Connects to the database
+                $mysqli = new mysqli("oniddb.cws.oregonstate.edu","wujiao-db","cUhlYd6WZm2g9lqP","wujiao-db");
+                if (!$mysqli || $mysqli->connect_errno) {
+                    echo "Connection error " . $mysqli->connect_errno . " " . $mysqli->connect_error;
+                }
+
+                if(!($stmt = $mysqli->prepare("SELECT emp_id FROM gw_employees"))){
+                    echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+                }
+
+                if(!$stmt->execute()){
+                echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+                }
+                if(!$stmt->bind_result($emp_id)){
+                echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+                }
+                while($stmt->fetch()){
+                echo '<option value=" '. $id . ' "> ' .$emp_id  '</option>\n';
+                }
+                $stmt->close();
+                ?>
+            </select>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Customer ID</legend>
+            <p>Customer ID
+            <select name = "customerid">
+
+
+
+
+
+            </select>
+
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Store</legend>
+            <p>Store 
+            <select name = "storeid">
+
+
+
+
+            </select>
+
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>SALE Date</legend>
+            <p>Year(YYYY):
+            <select name = "saleyear"/>
+                <?php
+                for ($i=2000; $i<=2014; $i++)
+                {
+                ?>
+                <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                <?php
+                }
+                ?>            </select>
+            </p>
+
+            <p>Month:<input type = "text" name = "salemonth"/></p>
+            <p>Day:<input type = "text" name = "saleday"/></p>
+            <p>Hour:<input type = "text" name = "salehour"/></p>
+            <p>Min:<input type = "text" name = "salemin"/></p>
+            <p>Second:<input type = "text" name = "salesecond"/></p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Pay Method</legend>
+            <p>Pay by
+            <select name = "paymethod">
+                <option></option>
+                <option>VISA</option>
+                <option>MASTERCARD</option>
+                <option>CASH</option>
+                <option>CHEQUE</option>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>SUBTOTAL</legend>
+                <p>SUBTOTAL:<input type = "text" name = "subtotal"/></p>
+            </fieldset>
+
+            <p><input type = "submit" name = "Add" value = "Add Sales"/></p>
+            <p><input type = "submit" name = "Update" value = "Update Sales"/></p>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>

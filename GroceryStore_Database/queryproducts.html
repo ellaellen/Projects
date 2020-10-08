@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+
+<html>
+
+<body>
+<font color = "blue", size = '5'>
+        Search Products
+</font>
+<br><br>
+
+<p>
+Please fill in the following infomation to search products in the database
+</p>
+
+<div>
+    <form action="searchproducts.php" method="post" >
+        <fieldset>
+            <legend>Filter by</legend>
+            <p>SupplyCompany
+            <select name = "supplier">
+                <option> </option>
+                <option>NESTLE</option><option>HEINZ</option>
+                <option>TROPICANA</option><option>GOOD HAVEN</option>
+                <option>KRAFT</option><option>LUCERNE</option>
+                <option>WHOLESOME FOOD</option><option>LOCAL</option>
+                <option>FARMANDYOU</option>
+            </select>
+            <a href="supplycompany.html">Add Supplier here</a>
+            </p>
+        
+            <p>Expire Before the Date(YYYY-MM-DD)<input type = "text" name = "ExpireDate"/></p>
+        
+        </fieldset>
+        
+        <p><input type = "submit" name = "SearchProducts" value = "Retrieve"/></p>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html >
+
+<html>
+
+<body>
+    
+ <font color = "blue", size = '5'>
+ Add and Update PRODUCTS
+</font>
+ 
+<br><br>
+
+<p>
+
+Please fill in the following infomation to add or update products to the database
+
+</p>
+<div>
+    <form action="addproducts.php" method="post" >
+        <fieldset>
+            <legend>Name</legend>
+            <p>Name: <input type = "text" name = "Name"/></p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Department</legend>
+            <p>Department
+            <select name = "Department">
+                <option></option>
+                <option>vegetables</option><option>fruits</option>
+                <option>condiments</option><option>beverages</option>
+                <option>dairy</option><option>bakery</option>
+                <option>meat</option><option>seafood</option>
+            </select>
+            <a href="departments.html">Add New Department here</a>
+            </p>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Supplier</legend>
+            <p>SupplyCompany
+            <select name = "supplier">
+                <option></option>
+                <option>NESTLE</option><option>HEINZ</option>
+                <option>TROPICANA</option><option>GOOD HAVEN</option>
+                <option>KRAFT</option><option>LUCERNE</option>
+                <option>WHOLESOME FOOD</option><option>LOCAL</option>
+                <option>FARMANDYOU</option>
+            </select>
+            <a href="supplycompany.html">Add New Supplier here</a>
+            </p>
+        </fieldset>
+        
+        <fieldset>
+            <legend>UnitPrice</legend>
+            <p>UnitPrice<input type = "text" name = "UnitPrice"/></p>
+        </fieldset>
+
+        <fieldset>
+            <legend>QuantityInStock</legend>
+            <p>QuantityInStock <input type = "text" name = "QuantityInStock"/></p>
+        </fieldset>
+        
+        <fieldset>
+            <legend>ExpireDate</legend>
+            <p>ExpireDate<input type = "text" name = "ExpireDate"/></p>
+        </fieldset>
+        
+        <fieldset>
+            <legend>BuyFromSupplier</legend>
+            <p>BuyPrice <input type = "text" name = "BuyPrice"/></p>
+        </fieldset>
+        
+        <p><input type = "submit" name = "Add" value = "Add Product"/></p>
+        <p><input type = "submit" name = "Update" value = "Update Product"/></p>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>

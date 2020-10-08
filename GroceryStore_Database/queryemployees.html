@@ -1,0 +1,59 @@
+<!DOCTYPE html >
+
+<html>
+
+
+<body>
+    <font color = "blue", size = '5'>
+        Search Employees
+    </font>
+<br><br>
+
+<p>
+Please fill in the following infomation to search employees in the database
+</p>
+
+<div>
+    <form action="searchemployees.php" method="post" >
+        <fieldset>
+            <legend>Filter by</legend>
+            <p>Store Branch
+            <select name = "store">
+                <option>ANY</option>
+                <option>TORONTO</option><option>CALGARY</option>
+                <option>NEW YORK</option><option>LOS ANGELES</option>
+            </select>
+            </p>
+        
+            <p>Job Title
+            <select name = "job">
+                <option>ANY</option>
+                <option>SALE REP</option><option>SHIFT SUPERVISOR</option>
+                <option>ASSOCIATE MANAGER</option><option>MANAGER</option>
+            </select>
+            </p>
+
+            <p>Join after the Date(YYYY-MM-DD)<input type = "text" name = "JoinDate"/></p>
+        
+        </fieldset>
+        
+        <p><input type = "submit" name = "SearchEmployees" value = "Retrieve"/></p>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>
