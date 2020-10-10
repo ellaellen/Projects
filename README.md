@@ -1,1 +1,1 @@
-Projects in various areas and languages
+Projects and course work in various areas and programming languages
